@@ -1,0 +1,149 @@
+<style>
+    /* Menggunakan Montserrat dari Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+    .auth-container {
+        background-color: #121212;
+        color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        border: 1px solid #333;
+        width: 760px;
+        height: fit-content;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .auth-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 40px;
+        border-bottom: 1px solid #333;
+        letter-spacing: 2px;
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+
+    .auth-content {
+        padding: 60px 40px;
+        text-align: center;
+    }
+
+    .auth-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+
+    .auth-content p {
+        font-size: 1rem;
+        color: #ccc;
+        margin-bottom: 40px;
+        line-height: 1.6;
+    }
+
+    .otp-group {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+
+    .otp-box {
+        width: 60px;
+        height: 70px;
+        background: transparent;
+        border: 1px solid #444;
+        color: white;
+        text-align: center;
+        font-size: 2rem;
+        font-family: 'Montserrat', sans-serif;
+        transition: border-color 0.3s;
+        outline: none;
+    }
+
+    .otp-box:focus {
+        border-color: #00FF88;
+    }
+
+    .resend {
+        font-size: 0.95rem;
+        color: #888;
+        margin-bottom: 50px;
+    }
+
+    .resend span {
+        color: #fff;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .auto-input {
+        color: #555;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.9rem;
+    }
+</style>
+
+<div class="auth-container">
+    <div class="auth-header">
+        <span>AUTHENTNICATION</span>
+        <span>✕</span>
+    </div>
+
+    <div class="auth-content">
+        <h2>OTP HAS BEEN SENT</h2>
+        <p>We've sent a secure 6-digit code to your device.<br>Please input the code below to verify your session.</p>
+
+        <div class="otp-group">
+            <input type="text" class="otp-box" maxlength="1">
+            <input type="text" class="otp-box" maxlength="1">
+            <input type="text" class="otp-box" maxlength="1">
+            <input type="text" class="otp-box" maxlength="1">
+            <input type="text" class="otp-box" maxlength="1">
+            <input type="text" class="otp-box" maxlength="1">
+        </div>
+
+        <div class="resend">
+            Didn't recieve the code ? <span>Resend Code</span>
+        </div>
+
+        <div class="auto-input">// Auto Input.</div>
+    </div>
+</div>
+
+<script>
+    const inputs = document.querySelectorAll('.otp-box');
+
+    inputs.forEach((input, index) => {
+        // Hanya membolehkan angka
+        input.addEventListener('input', (e) => {
+            if (e.inputType === "deleteContentBackward") return;
+            
+            // Jika input berisi lebih dari 1 karakter, ambil karakter terakhir
+            if (input.value.length > 1) {
+                input.value = input.value.slice(-1);
+            }
+
+            // Pindah ke input berikutnya jika sudah terisi
+            if (input.value !== '' && index < inputs.length - 1) {
+                inputs[index + 1].focus();
+            }
+        });
+
+        // Handle Backspace untuk pindah ke kotak sebelumnya
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && input.value === '' && index > 0) {
+                inputs[index - 1].focus();
+            }
+        });
+
+        // Mencegah input selain angka
+        input.addEventListener('keypress', (e) => {
+            if (e.key < '0' || e.key > '9') {
+                e.preventDefault();
+            }
+        });
+    });
+</script>

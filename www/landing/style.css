@@ -1,0 +1,536 @@
+/* --- GLOBAL STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 400;
+}
+
+a.selected {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 400;
+    border-bottom: #fff;
+    border-radius: 1px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 5px;
+    font-weight: 400;
+    margin: 80px 0 40px;
+    text-transform: uppercase;
+}
+
+.framecard{
+    gap: 20px;
+    display: grid;
+}
+
+.card{
+    border-radius: 4px;
+    color: #fff;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.main-dark-card {
+    background-color: #1A1A1A;
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+}
+
+.dark-card {
+    background-color: #232323;
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+}
+
+.card:hover {
+    background-color: #333;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,1);
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+/* --- HEADER & NAVBAR --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 25px 0;
+    background: rgba(26, 26, 26, 0);
+    color: white;
+    border: 1px solid #3F3F3F;
+}
+
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+nav ul li a:hover {
+    color: #bbb;
+    transition: color 0.3s ease;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    position: relative; /* DITAMBAHKAN BUAT GRADIENT */
+    height: 100vh;
+    background-color: #111;
+    background-image: url('../img/hero.webp');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-top: 80px;
+}
+
+.hero h1 {
+    font-size: 44px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+/* DITAMBAHKAN: EFEK GRADIENT BLUR PUTIH DI BAWAH HERO */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%; /* Lu bisa ubah % ini kalau blurnya kurang naik/turun */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none; 
+    z-index: 1;
+}
+
+/* DITAMBAHKAN: Biar teks hero lu gak ketimpa efek blurnya */
+.hero h1, .hero p {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- VISION & MISSION --- */
+.vm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card-vision {
+    grid-column: span 2;
+}
+
+.vm-grid .card .main-dark-card,
+.vm-grid .card .dark-card {
+    height: 100%;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-header h3 {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #aaa;
+    text-transform: uppercase;
+}
+
+.card-header i {
+    font-size: 16px;
+    color: #fff;
+}
+
+.vm-card p {
+    font-size: 13px;
+    font-weight: 300;
+    color: #ddd;
+}
+
+/* --- CORE VALUES --- */
+.cv-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.cv-card .number {
+    font-size: 11px;
+    color: #888;
+    margin-right: 8px;
+    font-weight: 600;
+}
+
+.cv-card h4 {
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    display: inline-block;
+    font-weight: 700;
+    color: #fff;
+}
+
+.cv-card p {
+    font-size: 12px;
+    font-weight: 300;
+    color: #ccc;
+}
+
+/* --- NEWEST RATING --- */
+.rating-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 120px;
+} 
+
+.rating-card {
+    background-color: #161616;
+    border: 1px solid #262626;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-text h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.user-text span {
+    font-size: 10px;
+    color: #777;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    background-color: #333;
+    border-radius: 4px;
+    background-image: url('../img/user.webp');
+    background-size: cover;
+}
+
+.review-text {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #eee;
+}
+
+.stars {
+    color: #ffc107;
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+.stars .fa-star.empty {
+    color: #444;
+}
+
+.date {
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.rating-images {
+    display: flex;
+    gap: 10px;
+}
+
+.rating-images img {
+    width: 50%;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 3px;
+    cursor: zoom-in;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.rating-images img:hover {
+    opacity: 0.85;
+    transform: scale(1.02);
+}
+
+.image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.88);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.image-lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.image-lightbox__img {
+    max-width: min(92vw, 1100px);
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 6px;
+    cursor: zoom-out;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    transform: scale(0.92);
+    transition: transform 0.25s ease;
+}
+
+.image-lightbox.is-open .image-lightbox__img {
+    transform: scale(1);
+}
+
+
+
+
+/* --- FOOTER --- */
+footer {
+    background-color: #111111;
+    color: #fff;
+    padding: 55px 0 65px;
+}
+
+.footer-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    border: 1px solid #ffffff;
+    padding: 50px 55px;
+}
+
+.footer-left h2 {
+    font-size: 26px;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+
+.footer-left p {
+    font-size: 11px;
+    color: #8a8a8a;
+    margin-bottom: 22px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    font-size: 20px;
+    color: #ffffff;
+    transition: opacity 0.3s;
+}
+
+.social-icons a:hover {
+    opacity: 0.75;
+}
+
+.footer-right {
+    display: flex;
+    gap: 85px;
+    padding-top: 4px;
+}
+
+.footer-col h4 {
+    font-size: 13px;
+    margin-bottom: 16px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    font-size: 12px;
+    color: #8a8a8a;
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+}
+
+/* 1. Overlay Latar Belakang (Gelap Transparan + Blur) */
+.modal-overlay {
+    display: none; /* Sembunyi di awal */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* Gelapnya pas */
+    backdrop-filter: blur(4px); /* Efek blur estetik di belakang */
+    z-index: 9999; /* Pastikan di paling depan */
+    
+    /* KUNCI TENGAH LAYAR */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container pembungkus gambar kita kasih overflow hidden biar pas di-zoom gak meluber keluar kotak hitam */
+.modal-wrapper {
+    position: relative;
+    background-color: #1A1A1A;
+    padding: 12px;
+    border: 1px solid #3F3F3F;
+    border-radius: 6px;
+    max-width: 90%;
+    max-height: 85vh;
+    display: inline-block;
+    overflow: hidden; /* Kunci utama biar potongan gambar rapi */
+    animation: popEffect 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+@keyframes popEffect {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Kondisi Gambar Normal di Dalam Kotak (Kursor Kaca Pembesar Plus) */
+.modal-img {
+    display: block;
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 2px;
+    cursor: zoom-in; /* Mengubah kursor jadi lambang kaca pembesar (+) */
+    transition: transform 0.2s ease; /* Biar transisi pas nge-zoom halus */
+}
+
+/* --- INI KELAS PAS GAMBARNYA DI-ZOOM (Kursor Kaca Pembesar Minus) --- */
+.modal-img.zoomed {
+    transform: scale(2); /* Perbesar gambar 2x lipat (bisa lu ganti jadi 1.5 atau 2.5) */
+    cursor: zoom-out; /* Mengubah kursor jadi lambang kaca pembesar (-) */
+}
+
+/* 4. Tombol Close (X) Bulat di Pojok Kanan Atas Kotak */
+.close-btn {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    background-color: #1A1A1A;
+    border: 1px solid #3F3F3F;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 26px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    z-index: 10000;
+}
+
+.close-btn:hover {
+    background-color: #3f3f3f;
+    color: #3498db; /* Efek highlight biru pas di-hover */
+}
+
+/* Tambahan: Kursor pointer di thumbnail rating biar tahu bisa di-klik */
+.rating-images img {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.rating-images img:hover {
+    transform: scale(1.03); /* Sedikit nge-pop pas di-hover */
+}
+
+/* --- RESPONSIVE DESIGN (MOBILE FRIENDLY) --- */
+@media (max-width: 992px) {
+    .vm-grid { grid-template-columns: 1fr; }
+    .card-vision { grid-column: span 1; }
+    .cv-grid { grid-template-columns: repeat(2, 1fr); }
+    .rating-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 678px) {
+    .hero h1 { font-size: 32px; }
+    .nav-container { flex-direction: column; gap: 15px; }
+    .cv-grid, .rating-grid { grid-template-columns: 1fr; }
+    .footer-box { flex-direction: column; gap: 40px; padding: 40px 30px; }
+    .footer-right { flex-direction: column; gap: 30px; }
+}

@@ -1,0 +1,290 @@
+<h1 class="header-title">DASHBOARD</h1>
+
+    <div class="grid-container">
+      
+      <div class="col">
+        <div class="stat-card">
+          <div class="stat-title">TOTAL OUTSTANDING PAYMENT</div>
+          <div class="stat-value text-green">Rp 297.000</div>
+          <div class="stat-desc">Requires immediate action to prevent service suspension.</div>
+        </div>
+
+        <div class="panel">
+          <div class="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff4444" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <span class="alert-text">CRITICAL: ambasing1234 IS 2 DAYS AWAY FROM DUE DATE</span>
+          </div>
+          
+          <div class="panel-title">// PENDING PAYMENT</div>
+          
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 35%">INVOICE ID</th>
+                  <th style="width: 25%">AMOUNT</th>
+                  <th style="width: 25%">DUE DATE</th>
+                  <th>MORE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ambasing1234</td>
+                  <td class="text-green">Rp 47.000</td>
+                  <td><span class="badge badge-red">29 APR 26</span></td>
+                  <td><button class="btn-sm-outline" onclick="openInvoiceModal('unpaid')">DETAILS</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="pagination">
+            <div class="page-group">
+              <span class="page-label">SHOWING 5 FROM 1 :</span>
+              <div class="page-controls">
+                <div class="page-box active">5</div>
+                <div class="page-box">10</div>
+                <div class="page-box">15</div>
+              </div>
+            </div>
+            <div class="page-group">
+              <span class="page-label">SLIDE :</span>
+              <div class="page-controls">
+                <div class="page-box active">1</div>
+                <input type="text" class="page-box-input" placeholder="_">
+                <span class="page-label">FROM</span>
+                <div class="page-box">1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">// PAYMENT ARCHIVE</div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 25%">INVOICE ID</th>
+                  <th style="width: 25%">AMOUNT</th>
+                  <th style="width: 20%">CREATED</th>
+                  <th style="width: 15%">STATUS</th>
+                  <th>MORE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ambasing1234</td>
+                  <td class="text-green">Rp 47.000</td>
+                  <td><span class="badge badge-red">21 APR 26</span></td>
+                  <td><span class="badge badge-red">UNPAID</span></td>
+                  <td><button class="btn-sm-outline" onclick="openInvoiceModal('unpaid')">DETAILS</button></td>
+                </tr>
+                <tr>
+                  <td>ambasing1111</td>
+                  <td class="text-green">Rp 47.000</td>
+                  <td><span class="badge badge-green">21 APR 26</span></td>
+                  <td><span class="badge badge-green">PAID</span></td>
+                  <td><button class="btn-sm-outline" onclick="openInvoiceModal('paid')">DETAILS</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <div class="page-group">
+              <span class="page-label">SHOWING 5 FROM 2 :</span>
+              <div class="page-controls">
+                <div class="page-box active">5</div>
+                <div class="page-box">10</div>
+                <div class="page-box">15</div>
+              </div>
+            </div>
+            <div class="page-group">
+              <span class="page-label">SLIDE :</span>
+              <div class="page-controls">
+                <div class="page-box active">1</div>
+                <input type="text" class="page-box-input" placeholder="_">
+                <span class="page-label">FROM</span>
+                <div class="page-box">2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="stat-card">
+          <div class="stat-title">FINISHED PROJECTS</div>
+          <div class="stat-value text-white">3</div>
+          <div class="stat-desc">+2 Projects completed and deployed this month.</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">// ASSETS & DELIVERABLES</div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%">PROJECT ID</th>
+                  <th style="width: 45%">SERVICE TYPE</th>
+                  <th style="width: 20%">COMPLETED</th>
+                  <th>FILES</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>PRJ-098</td>
+                  <td class="text-white">3D Live2D Model Rigging</td>
+                  <td>12 APR 26</td>
+                  <td><button class="btn-sm-outline" onclick="loadContent('file-explorer.html', null, 'PRJ-098')">DETAILS</button></td>
+                </tr>
+                <tr>
+                  <td>PRJ-082</td>
+                  <td class="text-white">E-Commerce API Integration</td>
+                  <td>05 MAR 26</td>
+                  <td><button class="btn-sm-outline" onclick="loadContent('file-explorer.html', null, 'PRJ-082')">DETAILS</button></td>
+                </tr>
+                <tr>
+                  <td>PRJ-075</td>
+                  <td class="text-white">Discord Moderation Bot</td>
+                  <td>18 FEB 26</td>
+                  <td><button class="btn-sm-outline" onclick="loadContent('file-explorer.html', null, 'PRJ-075')">DETAILS</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <div class="page-group">
+              <span class="page-label">SHOWING 5 FROM 3 :</span>
+              <div class="page-controls">
+                <div class="page-box active">5</div>
+                <div class="page-box">10</div>
+                <div class="page-box">15</div>
+              </div>
+            </div>
+            <div class="page-group">
+              <span class="page-label">SLIDE :</span>
+              <div class="page-controls">
+                <div class="page-box active">1</div>
+                <input type="text" class="page-box-input" placeholder="_">
+                <span class="page-label">FROM</span>
+                <div class="page-box">3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">// PURCHASED PRODUCTS</div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%">PRODUCT ID</th>
+                  <th style="width: 45%">PRODUCT NAME</th>
+                  <th style="width: 20%">DATE</th>
+                  <th>MORE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>PRJ-098</td>
+                  <td class="text-white">Product 1</td>
+                  <td>12 APR 26</td>
+                  <td><button class="btn-sm-outline" onclick="loadContent('file-explorer.html', null, 'PRJ-098')">DETAILS</button></td>
+                </tr>
+                <tr>
+                  <td>PRJ-082</td>
+                  <td class="text-white">Product 2</td>
+                  <td>05 MAR 26</td>
+                  <td><button class="btn-sm-outline" onclick="loadContent('file-explorer.html', null, 'PRJ-082')">DETAILS</button></td>
+                </tr>
+                <tr>
+                  <td>PRJ-075</td>
+                  <td class="text-white">Product 3</td>
+                  <td>18 FEB 26</td>
+                  <td><button class="btn-sm-outline" onclick="loadContent('file-explorer.html', null, 'PRJ-075')">DETAILS</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <div class="page-group">
+              <span class="page-label">SHOWING 5 FROM 3 :</span>
+              <div class="page-controls">
+                <div class="page-box active">5</div>
+                <div class="page-box">10</div>
+                <div class="page-box">15</div>
+              </div>
+            </div>
+            <div class="page-group">
+              <span class="page-label">SLIDE :</span>
+              <div class="page-controls">
+                <div class="page-box active">1</div>
+                <input type="text" class="page-box-input" placeholder="_">
+                <span class="page-label">FROM</span>
+                <div class="page-box">3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">// PROJECTS IN PROGRESS</div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%">PROJECT ID</th>
+                  <th style="width: 40%">SERVICE TYPE</th>
+                  <th style="width: 20%">STARTED DATE</th>
+                  <th style="width: 20%">ESTIMATED FINISHED</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>PRJ-098</td>
+                  <td class="text-white">Service 1</td>
+                  <td>12 APR 26</td>
+                  <td>21 APR 26</td>
+                </tr>
+                <tr>
+                  <td>PRJ-082</td>
+                  <td class="text-white">Service 2</td>
+                  <td>05 MAR 26</td>
+                  <td>18 APR 26</td>
+                </tr>
+                <tr>
+                  <td>PRJ-075</td>
+                  <td class="text-white">Service 3</td>
+                  <td>18 FEB 26</td>
+                  <td>19 APR 26</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <div class="page-group">
+              <span class="page-label">SHOWING 5 FROM 3 :</span>
+              <div class="page-controls">
+                <div class="page-box active">5</div>
+                <div class="page-box">10</div>
+                <div class="page-box">15</div>
+              </div>
+            </div>
+            <div class="page-group">
+              <span class="page-label">SLIDE :</span>
+              <div class="page-controls">
+                <div class="page-box active">1</div>
+                <input type="text" class="page-box-input" placeholder="_">
+                <span class="page-label">FROM</span>
+                <div class="page-box">3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="version">V.2026.C_DB</div>

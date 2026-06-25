@@ -1,0 +1,225 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@400;700&display=swap');
+  
+    /* ======= CODE EDITOR MODAL ======= */
+    .editor-modal {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 896px;
+      height: 690px;
+      background: #0D0E0F;
+      border: 1px solid #444748;
+      box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+      margin: 0 auto; /* Buat testing biar di tengah */
+    }
+  
+    /* Header */
+    .editor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+      height: 56px;
+      background: #000000;
+      border-bottom: 1px solid #111827;
+    }
+  
+    .editor-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+  
+    .editor-close {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      transition: 0.2s;
+    }
+    .editor-close:hover {
+      color: #ff4444;
+    }
+  
+    /* Main Body */
+    .editor-body {
+      display: flex;
+      flex-direction: row;
+      height: 602px;
+      background: #000000;
+    }
+  
+    /* Gutter (Line Numbers) */
+    .editor-gutter {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 8px 24px 0;
+      width: 48.61px;
+      border-right: 1px solid #1A1A1A;
+      font-family: 'Montserrat', sans-serif; /* Sesuai raw CSS */
+      font-size: 13px;
+      line-height: 22px;
+      color: #444748;
+      text-align: right;
+    }
+  
+    .line-num {
+      height: 22px;
+      padding-right: 8px;
+    }
+  
+    /* Code Content Area */
+    .editor-content {
+      display: flex;
+      flex-direction: column;
+      padding: 24px 0;
+      flex-grow: 1;
+      font-family: 'Inter', monospace;
+      font-size: 13px;
+      line-height: 22px;
+      color: #B7B5B4;
+      overflow-y: auto;
+    }
+  
+    .code-line {
+      padding-left: 32px;
+      height: 22px;
+      white-space: pre;
+    }
+  
+    .code-comment {
+      color: #656464;
+      font-style: italic;
+    }
+  
+    .code-bracket {
+      color: #C6C6C7;
+    }
+  
+    /* Highlighted Block (Baris 19-21) */
+    .code-highlight-wrapper {
+      background: rgba(41, 42, 42, 0.2);
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      width: 100%;
+    }
+  
+    /* Footer / Status Bar */
+    .editor-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+      height: 32px;
+      background: #1B1C1C;
+      border-top: 1px solid #444748;
+    }
+  
+    .footer-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  
+    .footer-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px; /* Disesuaikan agar proporsional */
+      color: #C4C7C8;
+    }
+  
+    .footer-icon {
+      fill: #C4C7C8;
+    }
+  </style>
+  
+  <div class="editor-modal">
+    
+    <div class="editor-header">
+      <div class="editor-title">README.C</div>
+      <button class="editor-close">&#x2715;</button>
+    </div>
+  
+    <div class="editor-body">
+      
+      <div class="editor-gutter">
+        <div class="line-num">1</div><div class="line-num">2</div><div class="line-num">3</div>
+        <div class="line-num">4</div><div class="line-num">5</div><div class="line-num">6</div>
+        <div class="line-num">7</div><div class="line-num">8</div><div class="line-num">9</div>
+        <div class="line-num">10</div><div class="line-num">11</div><div class="line-num">12</div>
+        <div class="line-num">13</div><div class="line-num">14</div><div class="line-num">15</div>
+        <div class="line-num">16</div><div class="line-num">17</div><div class="line-num">18</div>
+        <div class="line-num">19</div><div class="line-num">20</div><div class="line-num">21</div>
+        <div class="line-num">22</div><div class="line-num">23</div><div class="line-num">24</div>
+        <div class="line-num">25</div>
+      </div>
+  
+      <div class="editor-content">
+        <div class="code-line code-comment">/*</div>
+        <div class="code-line code-comment"> * README.C</div>
+        <div class="code-line code-comment"> * Created by the design system for developer precision.</div>
+        <div class="code-line code-comment"> * Technical metadata follows.</div>
+        <div class="code-line code-comment"> */</div>
+        <div class="code-line"></div>
+        <div class="code-line code-comment">// hello world!</div>
+        <div class="code-line"></div>
+        <div class="code-line">#include &lt;stdio.h&gt;</div>
+        <div class="code-line">#include &lt;stdlib.h&gt;</div>
+        <div class="code-line">#include &lt;string.h&gt;</div>
+        <div class="code-line"></div>
+        <div class="code-line">struct thankyou {</div>
+        <div class="code-line">    char *message;</div>
+        <div class="code-line">    int version;</div>
+        <div class="code-line"><span class="code-bracket">};</span></div>
+        <div class="code-line"></div>
+        <div class="code-line">int main(void) {</div>
+        
+        <div class="code-highlight-wrapper">
+          <div class="code-line" style="padding-left: 31px;">    struct thankyou note;</div>
+          <div class="code-line" style="padding-left: 31px;">    note.message = "Success is a journey, not a destination.";</div>
+          <div class="code-line" style="padding-left: 31px;">    note.version = 1;</div>
+        </div>
+        
+        <div class="code-line"></div>
+        <div class="code-line">    printf("%s\n", note.message);</div>
+        <div class="code-line">    return 0;</div>
+        <div class="code-line"><span class="code-bracket">}</span></div>
+      </div>
+  
+    </div>
+  
+    <div class="editor-footer">
+      <div class="footer-group">
+        <div class="footer-item">
+          <svg class="footer-icon" width="14" height="14" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          UTF-8
+        </div>
+        <div class="footer-item">
+          <svg class="footer-icon" width="14" height="14" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+          C
+        </div>
+      </div>
+      
+      <div class="footer-group">
+        <div class="footer-item">Ln 24, Col 1</div>
+        <div class="footer-item">Spaces: 4</div>
+      </div>
+    </div>
+  
+  </div>

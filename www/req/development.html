@@ -1,0 +1,228 @@
+<style>
+    .dev-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        animation: fadeIn 0.4s ease-in-out;
+        color: #fff;
+        padding-bottom: 120px;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dev-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .dev-header h2 {
+        font-size: 24px;
+        letter-spacing: 4px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #111; /* Sesuai desain lu, judul utamanya gelap */
+    }
+
+    .dev-header p {
+        font-size: 12px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .dev-card {
+        background-color: #242424; /* Warna card abu-abu gelap */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 35px 40px;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .dev-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    /* Kiri: Info Proyek */
+    .dev-left {
+        flex: 1;
+    }
+
+    .dev-left h3 {
+        font-size: 20px;
+        letter-spacing: 2px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .dev-left p {
+        font-size: 11px;
+        color: #888;
+        font-weight: 400;
+        margin-bottom: 25px;
+    }
+
+    .dev-divider {
+        border: 0;
+        height: 1px;
+        background-color: #444;
+        margin-bottom: 15px;
+        width: 85%; /* Garisnya gak full mentok ke kanan */
+    }
+
+    .dev-tags {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .dev-tag-item {
+        font-size: 10px;
+        font-weight: 500;
+        border: 1px solid #666;
+        padding: 6px 12px;
+        color: #ccc;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    /* Kanan: Kontak */
+    .dev-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-left: 30px;
+        min-width: 180px;
+    }
+
+    .dev-right h4 {
+        font-size: 16px;
+        letter-spacing: 2px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .dev-right p {
+        font-size: 10px;
+        color: #777;
+        margin-bottom: 20px;
+    }
+
+    .dev-socials {
+        display: flex;
+        gap: 18px;
+    }
+
+    .dev-social-icon {
+        font-size: 28px;
+        color: #fff;
+        cursor: pointer;
+        transition: color 0.2s, transform 0.2s;
+    }
+
+    .dev-social-icon:hover {
+        color: #bbb;
+        transform: scale(1.1);
+    }
+
+    /* Responsif buat Mobile / HP */
+    @media (max-width: 768px) {
+        .dev-card {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 30px;
+            padding: 25px;
+        }
+        .dev-divider {
+            width: 100%; /* Garis full pas di HP */
+        }
+        .dev-right {
+            align-items: flex-start;
+            margin-left: 0;
+            border-top: 1px dashed #444;
+            padding-top: 25px;
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="dev-container">
+    
+    <div class="dev-header">
+        <h2>DEVELOPMENTS</h2>
+        <p>lorem ipsum olor sit amet amit laus keitu shems pse sksi pelk fum une</p>
+    </div>
+
+    <div class="dev-card">
+        <div class="dev-left">
+            <h3>ROBLOX PROJECTS</h3>
+            <p>Everything about Roblox Studio.</p>
+            <hr class="dev-divider">
+            <div class="dev-tags">
+                <span class="dev-tag-item">MAP CREATING</span>
+                <span class="dev-tag-item">SCRIPTING CUSTOM</span>
+                <span class="dev-tag-item">3D CUSTOM</span>
+                <span class="dev-tag-item">UI/UX DESIGN</span>
+            </div>
+        </div>
+        <div class="dev-right">
+            <h4>CONTACT</h4>
+            <p>Let's Build Together !</p>
+            <div class="dev-socials">
+                <a href="#" class="dev-social-icon"><i class="fa-brands fa-discord"></i></a>
+                <a href="#" class="dev-social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="dev-card">
+        <div class="dev-left">
+            <h3>WEBSITE PROJECTS</h3>
+            <p>Everything about Websites.</p>
+            <hr class="dev-divider">
+            <div class="dev-tags">
+                <span class="dev-tag-item">COMPANY PROFILE</span>
+                <span class="dev-tag-item">FULL-STACK</span>
+                <span class="dev-tag-item">WORDPRESS</span>
+                <span class="dev-tag-item">UI/UX DESIGN</span>
+            </div>
+        </div>
+        <div class="dev-right">
+            <h4>CONTACT</h4>
+            <p>Let's Build Together !</p>
+            <div class="dev-socials">
+                <a href="#" class="dev-social-icon"><i class="fa-brands fa-discord"></i></a>
+                <a href="#" class="dev-social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="dev-card">
+        <div class="dev-left">
+            <h3>BOT PROJECTS</h3>
+            <p>Everything about Bots and automation.</p>
+            <hr class="dev-divider">
+            <div class="dev-tags">
+                <span class="dev-tag-item">DISCORD BOT</span>
+                <span class="dev-tag-item">TELEGRAM BOT</span>
+                <span class="dev-tag-item">WHATSAPP API</span>
+                <span class="dev-tag-item">AUTO MODERATION</span>
+            </div>
+        </div>
+        <div class="dev-right">
+            <h4>CONTACT</h4>
+            <p>Let's Build Together !</p>
+            <div class="dev-socials">
+                <a href="#" class="dev-social-icon"><i class="fa-brands fa-discord"></i></a>
+                <a href="#" class="dev-social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+</div>

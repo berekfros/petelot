@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PETELOT - Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="brand">PETELOT</div>
+    <nav class="nav-menu">
+      <a href="https://www.youtube.com/shorts/mqq-5vEsZmU" target="_blank" class="nav-item active-white always-active">
+        <span class="abbr">GS</span> GET STARTED
+      </a>
+      
+      <a href="javascript:void(0)" class="nav-item" onclick="loadContent('dashboard.html', this)">
+        <span class="abbr">DB</span> DASHBOARD
+      </a>
+      <a href="javascript:void(0)" class="nav-item" onclick="loadContent('cart.html', this)">
+        <span class="abbr">CT</span> CART
+      </a>
+      <a href="javascript:void(0)" class="nav-item" onclick="loadContent('file.html', this)">
+        <span class="abbr">FL</span> FILES
+      </a>
+      <a href="javascript:void(0)" class="nav-item" onclick="loadContent('infrastructure.html', this)">
+        <span class="abbr">IF</span> INFRASTRUCTURE
+      </a>
+      <a href="javascript:void(0)" class="nav-item" onclick="loadContent('profile.html', this)">
+        <span class="abbr">US</span> USER SETTING
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="btn">RETURN TO SITE</button>
+      <button class="btn btn-danger">LOG OUT SYSTEM</button>
+    </div>
+  </aside>
+
+  <main class="main-content" id="main-display">
+    </main>
+
+    <script>
+      // ==========================================
+// 1. FUNGSI FETCH HALAMAN UTAMA
+// ==========================================
+async function loadContent(page, element, projectId = null) {
+  const display = document.getElementById('main-display');
+  
+  try {
+    const response = await fetch(`../req/${page}`);
+    if (!response.ok) throw new Error('Page not found');
+    let content = await response.text();
+    
+    // Dynamic data replacement (Simulating fetch data)
+    if (projectId) {
+      // Standardize project ID for the display (e.g., project-prj-098)
+      const formattedId = projectId.toLowerCase().startsWith('project-') ? projectId.toLowerCase() : `project-${projectId.toLowerCase()}`;
+      content = content.replace(/project-prj-098/g, formattedId);
+    }
+    
+    display.innerHTML = content;
+    
+    // Handle Sidebar Active States
+    const navItems = document.querySelectorAll('.nav-menu .nav-item');
+    navItems.forEach(item => {
+      if (!item.classList.contains('always-active')) {
+        item.classList.remove('active-green', 'active-white');
+      }
+    });
+    
+    // Find target nav item if not passed directly (for internal page navigation)
+    let activeItem = element;
+    if (!activeItem) {
+      if (page === 'file-explorer.html' || page === 'file.html') {
+        activeItem = Array.from(navItems).find(i => i.textContent.includes('FILES'));
+      } else if (page === 'dashboard.html') {
+        activeItem = Array.from(navItems).find(i => i.textContent.includes('DASHBOARD'));
+      } else if (page === 'cart.html') {
+        activeItem = Array.from(navItems).find(i => i.textContent.includes('CART'));
+      } else if (page === 'infrastructure.html') {
+        activeItem = Array.from(navItems).find(i => i.textContent.includes('INFRASTRUCTURE'));
+      } else if (page === 'profile.html') {
+        activeItem = Array.from(navItems).find(i => i.textContent.includes('USER SETTING'));
+      }
+    }
+    
+    if (activeItem && !activeItem.classList.contains('always-active')) {
+      activeItem.classList.add('active-green');
+    }
+  } catch (error) {
+    display.innerHTML = `<h1 class="header-title">ERROR</h1><p>${error.message}</p>`;
+  }
+}
+
+// ==========================================
+// 2. FUNGSI DROPDOWN STATS & WARNA DINAMIS
+// ==========================================
+function toggleStats(btn) {
+  btn.classList.toggle('active-stats');
+  const mainRow = btn.closest('.main-row');
+  mainRow.classList.toggle('expanded');
+  const statsRow = mainRow.nextElementSibling;
+  
+  if (statsRow && statsRow.classList.contains('stats-subrow')) {
+    statsRow.classList.toggle('show');
+    
+    if (statsRow.classList.contains('show')) {
+      const circles = statsRow.querySelectorAll('.svg-progress-container');
+      
+      circles.forEach(container => {
+        const value = parseFloat(container.getAttribute('data-value')) || 0;
+        const isActive = container.getAttribute('data-active') === 'true';
+        const calculatedOffset = 100 - value;
+        container.style.setProperty('--offset', calculatedOffset);
+        
+        let r, g, b;
+
+        if (!isActive) {
+          r = 102; g = 102; b = 102; // Abu-abu
+        } else {
+          if (value <= 50) {
+            let percent = value / 50; 
+            r = Math.round(0 + (246 - 0) * percent);
+            g = 255; 
+            b = Math.round(136 + (0 - 136) * percent);
+          } else {
+            let percent = (value - 50) / 50;
+            r = Math.round(246 + (255 - 246) * percent);
+            g = Math.round(255 + (68 - 255) * percent);
+            b = Math.round(0 + (68 - 0) * percent);
+          }
+        }
+        container.style.setProperty('--stat-rgb', `${r}, ${g}, ${b}`);
+      });
+    }
+  }
+}
+
+// ==========================================
+// 3. FUNGSI FETCH MODAL OPTIONS
+// ==========================================
+async function openOptionsModal() {
+  // Bikin layer background gelap kalau belum ada
+  let overlay = document.getElementById('options-modal-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'options-modal-overlay';
+    Object.assign(overlay.style, {
+      position: 'fixed', top: '0', left: '0', width: '100%', height: '100%',
+      backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(5px)',
+      zIndex: '1000', display: 'none', justifyContent: 'center', alignItems: 'center'
+    });
+    document.body.appendChild(overlay);
+  }
+
+  try {
+    // Fetch file modal buatan lo
+    const response = await fetch('../req/modal/options.html');
+    if (!response.ok) throw new Error('Modal file not found');
+    const modalHtml = await response.text();
+    
+    // Inject HTML ke dalam overlay dan tampilkan
+    overlay.innerHTML = modalHtml;
+    overlay.style.display = 'flex';
+
+    // Otomatis kasih fungsi close ke tombol "X" yang ada di HTML modal lo
+    const closeBtn = overlay.querySelector('.mo-close');
+    if (closeBtn) {
+      closeBtn.onclick = closeOptionsModal;
+    }
+  } catch (error) {
+    console.error('Error loading modal:', error);
+    alert('Gagal memuat options modal!');
+  }
+}
+
+function closeOptionsModal() {
+  const overlay = document.getElementById('options-modal-overlay');
+  if (overlay) {
+    overlay.style.display = 'none';
+    overlay.innerHTML = ''; // Bersihkan isi setelah ditutup
+  }
+}
+
+async function openInvoiceModal(paymentStatus) {
+  let overlay = document.getElementById('options-modal-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'options-modal-overlay';
+    Object.assign(overlay.style, {
+      position: 'fixed', top: '0', left: '0', width: '100%', height: '100%',
+      backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(5px)',
+      zIndex: '1000', display: 'none', justifyContent: 'center', alignItems: 'center'
+    });
+    document.body.appendChild(overlay);
+  }
+
+  try {
+    // 1. Fetch file master invoice
+    const response = await fetch('../req/modal/invoice.html');
+    if (!response.ok) throw new Error('Invoice file not found');
+    const modalHtml = await response.text();
+    
+    // 2. Tampilkan HTML-nya
+    overlay.innerHTML = modalHtml;
+    overlay.style.display = 'flex';
+
+    // 3. LOGIKA JS: UBAH TAMPILAN BERDASARKAN STATUS
+    const badge = document.getElementById('invStatusBadge');
+    const primaryBtn = document.getElementById('invPrimaryAction');
+
+    if (paymentStatus === 'PAID') {
+      badge.textContent = 'PAID';
+      badge.className = 'inv-badge badge-paid';
+      primaryBtn.innerHTML = 'GIVE RATING';
+    } 
+    else if (paymentStatus === 'UNPAID') {
+      badge.textContent = 'UNPAID';
+      badge.className = 'inv-badge badge-unpaid';
+      primaryBtn.innerHTML = 'PROCEED TO PAY &rarr;';
+    }
+
+  } catch (error) {
+    console.error('Error loading invoice:', error);
+    alert('Gagal memuat invoice details!');
+  }
+}
+
+async function openTextExplorer() {
+  let overlay = document.getElementById('options-modal-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'options-modal-overlay';
+    Object.assign(overlay.style, {
+      position: 'fixed', top: '0', left: '0', width: '100%', height: '100%',
+      backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(5px)',
+      zIndex: '1000', display: 'none', justifyContent: 'center', alignContent: 'center', alignItems: 'center'
+    });
+    document.body.appendChild(overlay);
+  }
+
+  try {
+    // 1. Fetch file textexplorer.html (Pastikan nama filenya bener)
+    const response = await fetch('../req/modal/textexplorer.html');
+    if (!response.ok) throw new Error('Text explorer file not found');
+    const modalHtml = await response.text();
+    
+    // 2. Tampilkan HTML-nya
+    overlay.innerHTML = modalHtml;
+    overlay.style.display = 'flex';
+
+    // 3. Pasang fungsi close di tombol 'X' modal text
+    const closeBtn = overlay.querySelector('.editor-close');
+    if (closeBtn) {
+      closeBtn.onclick = closeOptionsModal; // Pakai fungsi close yang sama
+    }
+
+  } catch (error) {
+    console.error('Error loading text explorer:', error);
+    alert('Gagal memuat source code!');
+  }
+}
+
+async function openPaymentModal() {
+  let overlay = document.getElementById('options-modal-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'options-modal-overlay';
+    Object.assign(overlay.style, {
+      position: 'fixed', top: '0', left: '0', width: '100%', height: '100%',
+      backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(5px)',
+      zIndex: '1000', display: 'none', justifyContent: 'center', alignItems: 'center'
+    });
+    document.body.appendChild(overlay);
+  }
+
+  try {
+    // Pastikan nama filenya bener: paymentmethod.html
+    const response = await fetch('../req/modal/paymentmethod.html');
+    if (!response.ok) throw new Error('Payment modal file not found');
+    const modalHtml = await response.text();
+    
+    overlay.innerHTML = modalHtml;
+    overlay.style.display = 'flex';
+
+    // Kasih fungsi close ke tombol X di modal
+    const closeBtn = overlay.querySelector('.mo-close');
+    if (closeBtn) {
+      closeBtn.onclick = closeOptionsModal; // Manggil fungsi close yang udah ada
+    }
+  } catch (error) {
+    console.error('Error loading payment modal:', error);
+    alert('Gagal memuat pilihan pembayaran!');
+  }
+}
+
+function switchStep(stepId) {
+    document.getElementById('step-method').style.display = 'none';
+    document.getElementById('step-qris').style.display = 'none';
+    document.getElementById('step-success').style.display = 'none';
+    
+    document.getElementById(stepId).style.display = 'block';
+  }
+
+// Load default content
+window.onload = () => {
+  loadContent('dashboard.html', document.querySelector('.nav-menu .nav-item:nth-child(2)'));
+};
+    </script>
+</body>
+</html>

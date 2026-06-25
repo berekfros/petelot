@@ -1,0 +1,264 @@
+<style>
+    .infra-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        animation: fadeIn 0.4s ease-in-out;
+        padding-bottom: 120px;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .dev-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .dev-header h2 {
+        font-size: 24px;
+        letter-spacing: 4px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #111; /* Sesuai desain lu, judul utamanya gelap */
+    }
+
+    .dev-header p {
+        font-size: 12px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .hosting-card {
+        background-color: #242424; /* Warna abu-abu gelap sesuai figma */
+        border-radius: 4px;
+        padding: 40px;
+        width: 100%;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .hosting-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+
+    .hosting-subtitle {
+        font-size: 12px;
+        color: #888;
+        font-weight: 400;
+        margin-bottom: 35px;
+    }
+
+    .hosting-table {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hosting-header {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr 2fr;
+        padding: 0 20px 15px 20px;
+        border-bottom: 1px solid #444;
+        font-size: 10px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 1px;
+    }
+
+    .hosting-row {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr 2fr;
+        padding: 20px;
+        border-bottom: 1px solid #333;
+        font-size: 12px;
+        color: #ccc;
+        align-items: center;
+        transition: background 0.2s;
+    }
+
+    .hosting-row:last-child {
+        border-bottom: none;
+    }
+
+    .hosting-row:hover {
+        background-color: #2a2a2a;
+    }
+
+    /* Styling khusus baris yang [RECOMMENDED] */
+    .hosting-row.highlight {
+        border-left: 3px solid #00ff00; /* Garis hijau di kiri */
+        padding-left: 17px; /* Dikurang 3px biar teksnya tetap sejajar sama baris lain */
+        background-color: rgba(0, 255, 0, 0.02);
+    }
+
+    .badge-rec {
+        color: #00ff00;
+        font-weight: 700;
+        font-size: 9px;
+        margin-left: 8px;
+        letter-spacing: 1px;
+    }
+
+    .price-note {
+        font-size: 10px;
+        color: #777;
+        margin-left: 4px;
+        font-weight: 400;
+    }
+
+    /* Responsif buat di HP */
+    @media (max-width: 768px) {
+        .hosting-header { display: none; } /* Sembunyiin header kalau di HP */
+        .hosting-row {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 20px 15px;
+        }
+        .hosting-row.highlight {
+            padding-left: 12px;
+        }
+        .hosting-row div::before {
+            /* Nambahin label otomatis di HP biar gak bingung */
+            content: attr(data-label) ": ";
+            font-weight: 700;
+            color: #fff;
+            display: inline-block;
+            width: 100px;
+        }
+        .hosting-row div:first-child::before { display: none; }
+        .hosting-row div:first-child { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    }
+</style>
+
+<div class="infra-container">
+
+    <div class="dev-header">
+        <h2>INFRASTRUCTURES</h2>
+        <p>lorem ipsum olor sit amet amit laus keitu shems pse sksi pelk fum une</p>
+    </div>
+    
+    <div class="hosting-card">
+        <h2 class="hosting-title">BOT HOSTING</h2>
+        <p class="hosting-subtitle">Support Python. Match for Discord Bot, Telegram Bot, WhatsApp Bot, and etc bots.</p>
+
+        <div class="hosting-table">
+            <div class="hosting-header">
+                <div>TIER</div>
+                <div>CPU</div>
+                <div>STORAGE</div>
+                <div>RAM</div>
+                <div>BANDWIDTH</div>
+                <div>PRICE 2MO / 1YR</div>
+            </div>
+            
+            <div class="hosting-row">
+                <div data-label="TIER">Tier 5</div>
+                <div data-label="CPU">0.1 CPU</div>
+                <div data-label="STORAGE">1 GB</div>
+                <div data-label="RAM">100 MB</div>
+                <div data-label="BANDWIDTH">1MB / 8Mbps</div>
+                <div data-label="PRICE">Rp.0 / Rp.0 <span class="price-note">(1 Ads = 9 Hours)</span></div>
+            </div>
+            <div class="hosting-row">
+                <div data-label="TIER">Tier 4</div>
+                <div data-label="CPU">0.175 CPU</div>
+                <div data-label="STORAGE">3 GB</div>
+                <div data-label="RAM">200 MB</div>
+                <div data-label="BANDWIDTH">1MB / 8Mbps</div>
+                <div data-label="PRICE">Rp.15.000 / Rp.30.000</div>
+            </div>
+            <div class="hosting-row highlight">
+                <div data-label="TIER">Tier 3 <span class="badge-rec">[RECOMMENDED]</span></div>
+                <div data-label="CPU">0.5 CPU</div>
+                <div data-label="STORAGE">5 GB</div>
+                <div data-label="RAM">500 MB</div>
+                <div data-label="BANDWIDTH">2MB / 16Mbps</div>
+                <div data-label="PRICE">Rp.19.000 / Rp.37.000</div>
+            </div>
+            <div class="hosting-row highlight">
+                <div data-label="TIER">Tier 2 <span class="badge-rec">[RECOMMENDED]</span></div>
+                <div data-label="CPU">1 CPU</div>
+                <div data-label="STORAGE">10 GB</div>
+                <div data-label="RAM">1 GB</div>
+                <div data-label="BANDWIDTH">3MB / 24Mbps</div>
+                <div data-label="PRICE">Rp.21.000 / Rp.47.000</div>
+            </div>
+            <div class="hosting-row">
+                <div data-label="TIER">Tier 1</div>
+                <div data-label="CPU">2 CPU</div>
+                <div data-label="STORAGE">12 GB</div>
+                <div data-label="RAM">1.5 GB</div>
+                <div data-label="BANDWIDTH">4MB / 32Mbps</div>
+                <div data-label="PRICE">Rp.31.000 / Rp.57.000</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hosting-card">
+        <h2 class="hosting-title">WORDPRESS HOSTING</h2>
+        <p class="hosting-subtitle">Wordpress Hosting need ?, All covered.</p>
+
+        <div class="hosting-table">
+            <div class="hosting-header">
+                <div>TIER</div>
+                <div>CPU</div>
+                <div>STORAGE</div>
+                <div>RAM</div>
+                <div>BANDWIDTH</div>
+                <div>PRICE 2MO / 1YR</div>
+            </div>
+            
+            <div class="hosting-row">
+                <div data-label="TIER">Tier 5</div>
+                <div data-label="CPU">0.1 CPU</div>
+                <div data-label="STORAGE">1 GB</div>
+                <div data-label="RAM">100 MB</div>
+                <div data-label="BANDWIDTH">1MB / 8Mbps</div>
+                <div data-label="PRICE">Rp.0 / Rp.0 <span class="price-note">(1 Ads = 9 Hours)</span></div>
+            </div>
+            <div class="hosting-row">
+                <div data-label="TIER">Tier 4</div>
+                <div data-label="CPU">0.175 CPU</div>
+                <div data-label="STORAGE">3 GB</div>
+                <div data-label="RAM">200 MB</div>
+                <div data-label="BANDWIDTH">1MB / 8Mbps</div>
+                <div data-label="PRICE">Rp.15.000 / Rp.30.000</div>
+            </div>
+            <div class="hosting-row highlight">
+                <div data-label="TIER">Tier 3 <span class="badge-rec">[RECOMMENDED]</span></div>
+                <div data-label="CPU">0.5 CPU</div>
+                <div data-label="STORAGE">5 GB</div>
+                <div data-label="RAM">500 MB</div>
+                <div data-label="BANDWIDTH">2MB / 16Mbps</div>
+                <div data-label="PRICE">Rp.19.000 / Rp.37.000</div>
+            </div>
+            <div class="hosting-row highlight">
+                <div data-label="TIER">Tier 2 <span class="badge-rec">[RECOMMENDED]</span></div>
+                <div data-label="CPU">1 CPU</div>
+                <div data-label="STORAGE">10 GB</div>
+                <div data-label="RAM">1 GB</div>
+                <div data-label="BANDWIDTH">3MB / 24Mbps</div>
+                <div data-label="PRICE">Rp.21.000 / Rp.47.000</div>
+            </div>
+            <div class="hosting-row">
+                <div data-label="TIER">Tier 1</div>
+                <div data-label="CPU">2 CPU</div>
+                <div data-label="STORAGE">12 GB</div>
+                <div data-label="RAM">1.5 GB</div>
+                <div data-label="BANDWIDTH">4MB / 32Mbps</div>
+                <div data-label="PRICE">Rp.31.000 / Rp.57.000</div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,116 @@
+<style>
+    /* ======= CSS INVOICE MODAL (MASTER) ======= */
+    .inv-container {
+      width: 100%; max-width: 450px; background-color: #111111;
+      border: 1px solid #222222; font-family: 'Montserrat', sans-serif;
+      color: #ffffff; margin: 0 auto; display: flex; flex-direction: column;
+    }
+    
+    .inv-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 25px 30px; border-bottom: 1px solid #222222;
+    }
+    .inv-title { font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #fff; }
+    .inv-title span { color: #666; font-weight: 600; }
+    .inv-close { background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.2s; }
+    .inv-close:hover { color: #fff; }
+  
+    .inv-meta {
+      display: flex; justify-content: space-between; padding: 25px 30px;
+      border-bottom: 1px solid #222222;
+    }
+    .inv-meta-group { display: flex; flex-direction: column; gap: 8px; }
+    .inv-meta-label { font-size: 9px; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .inv-meta-value { font-size: 11px; font-weight: 600; color: #fff; letter-spacing: 0.5px; }
+    .text-right { text-align: right; }
+  
+    .inv-items { padding: 25px 30px; border-bottom: 1px solid #222222; }
+    .inv-row { display: grid; grid-template-columns: 2fr 4fr 3fr; gap: 10px; align-items: center; padding: 12px 0; }
+    .inv-row-header { border-bottom: 1px dashed #444; padding-bottom: 15px; margin-bottom: 5px; }
+    
+    .inv-col-head { font-size: 9px; color: #666; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+    .inv-col-id { font-size: 10px; color: #666; letter-spacing: 1px; }
+    .inv-col-name { font-size: 10px; color: #fff; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+    .inv-col-price { font-size: 11px; font-weight: 600; text-align: right; letter-spacing: 0.5px; }
+    
+    .text-neon-green { color: #00FF88; }
+    .text-neon-red { color: #ff4444; }
+  
+    .inv-total-section {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 25px 30px; background-color: #0a0a0a; border-bottom: 1px solid #222222;
+    }
+    .inv-total-label { font-size: 10px; color: #666; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+    .inv-total-value { font-size: 24px; font-weight: 600; color: #fff; letter-spacing: 1px; }
+    
+    /* Badge Styles (Disiapin dua-duanya) */
+    .inv-badge {
+      padding: 6px 12px; font-size: 9px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; border-radius: 2px; transition: 0.3s;
+    }
+    .badge-paid { color: #00FF88; border: 1px solid rgba(0, 255, 136, 0.4); background: rgba(0, 255, 136, 0.05); }
+    .badge-unpaid { color: #ff4444; border: 1px solid rgba(255, 68, 68, 0.4); background: rgba(255, 68, 68, 0.05); }
+  
+    /* Buttons */
+    .inv-actions { padding: 30px; display: flex; flex-direction: column; gap: 15px; align-items: center; }
+    .btn-inv {
+      width: 100%; max-width: 250px; padding: 14px; border: none; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 400; /* Regular Font */
+      letter-spacing: 3px; text-transform: uppercase; transition: 0.2s; font-family: 'Montserrat', sans-serif;
+    }
+    .btn-primary { background-color: #00FF88; color: #000; }
+    .btn-primary:hover { background-color: #2bff00; }
+    .btn-secondary { background-color: #fff; color: #000; }
+    .btn-secondary:hover { background-color: #e0e0e0; }
+  </style>
+  
+  <div class="inv-container">
+    
+    <div class="inv-header">
+      <div class="inv-title"><span>// INVOICE</span> DETAILS</div>
+      <button class="inv-close" onclick="closeOptionsModal()">&#x2715;</button>
+    </div>
+  
+    <div class="inv-meta">
+      <div class="inv-meta-group">
+        <div class="inv-meta-label">INVOICE ID</div>
+        <div class="inv-meta-value" id="invModalId">ambasing1234</div>
+      </div>
+      <div class="inv-meta-group text-right">
+        <div class="inv-meta-label">PURCHASE DATE</div>
+        <div class="inv-meta-value" id="invModalDate">28 APR 26</div>
+      </div>
+    </div>
+  
+    <div class="inv-items">
+      <div class="inv-row inv-row-header">
+        <div class="inv-col-head">ITEM ID</div>
+        <div class="inv-col-head">SERVICE / PRODUCT NAME</div>
+        <div class="inv-col-head text-right">PRICE</div>
+      </div>
+      
+      <div class="inv-row">
+        <div class="inv-col-id">PRJ-056</div>
+        <div class="inv-col-name">PRODUCT 1</div>
+        <div class="inv-col-price text-neon-green">Rp. 150.000</div>
+      </div>
+      <div class="inv-row">
+        <div class="inv-col-id">PRD-056</div>
+        <div class="inv-col-name">PRODUCT 2</div>
+        <div class="inv-col-price text-neon-green">Rp. 350.000</div>
+      </div>
+    </div>
+  
+    <div class="inv-total-section">
+      <div class="inv-total-group">
+        <div class="inv-total-label">TOTAL AMOUNT</div>
+        <div class="inv-total-value">Rp. 47.000</div>
+      </div>
+      <div id="invStatusBadge" class="inv-badge">STATUS</div>
+    </div>
+  
+    <div class="inv-actions">
+      <button id="invPrimaryAction" class="btn-inv btn-primary">ACTION BUTTON</button>
+      <button class="btn-inv btn-secondary">DOWNLOAD AS PDF</button>
+    </div>
+  </div>

@@ -1,0 +1,100 @@
+<style>
+    /* Container buat demo supaya berjejer, nanti bisa dihapus kalau mau dipakai satuan */
+    .notif-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      background-color: #0a0a0a;
+      padding: 20px;
+    }
+  
+    /* Base Notif Card */
+    .notif-card {
+      width: 300px;
+      background-color: #111111;
+      border: 1px solid #333333;
+      font-family: 'Montserrat', sans-serif;
+      color: #ffffff;
+    }
+  
+    .notif-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid #333333;
+    }
+  
+    .notif-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  
+    .notif-close {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+    .notif-close:hover {
+      opacity: 0.6;
+    }
+  
+    .notif-body {
+      padding: 20px;
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: #ffffff;
+    }
+  
+    /* Varian Warna */
+    .notif-error .notif-title { color: #ff0000; }
+    .notif-alert .notif-title { color: #ffcc00; }
+    .notif-success .notif-title { color: #00FF88; }
+  </style>
+  
+  <div class="notif-container">
+    
+    <div class="notif-card notif-error">
+      <div class="notif-header">
+        <div class="notif-title">ERROR !</div>
+        <button class="notif-close">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="notif-body">
+        $ERROR
+      </div>
+    </div>
+  
+    <div class="notif-card notif-alert">
+      <div class="notif-header">
+        <div class="notif-title">ALERT !</div>
+        <button class="notif-close">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="notif-body">
+        $ALERT
+      </div>
+    </div>
+  
+    <div class="notif-card notif-success">
+      <div class="notif-header">
+        <div class="notif-title">SUCCESS.</div>
+        <button class="notif-close">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="notif-body">
+        $SUCCESS
+      </div>
+    </div>
+  
+  </div>

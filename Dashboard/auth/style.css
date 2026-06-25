@@ -1,0 +1,375 @@
+/* --- RESET & ROOT VARIABLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --bg-right: #0f0f0f;
+    --input-bg: #080808;
+    --border-color: #222;
+    --text-white: #ffffff;
+    --text-gray: #777777;
+    --text-dark-gray: #444444;
+}
+
+body {
+    background-color: var(--bg-right);
+    color: var(--text-white);
+    overflow: hidden; /* Biar gak bisa di scroll ke bawah */
+}
+
+.auth-wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ================================== */
+/* LEFT PANEL (GAMBAR & BRANDING)     */
+/* ================================== */
+.left-panel {
+    width: 60%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Slider Background */
+.bg-slider {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+}
+
+.bg-layer {
+    position: absolute;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(12px) brightness(0.7); /* Efek blur gelap sesuai foto lu */
+    transform: scale(1.05); /* Sedikit diperbesar biar tepi blurnya gak kelihatan putih */
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Posisi Awal Gambar */
+.login-bg { transform: translateY(0) scale(1.05); }
+.register-bg { transform: translateY(-100%) scale(1.05); } /* Siaga di atas */
+
+/* Animasi saat pindah ke Register */
+.auth-wrapper.is-register .login-bg { transform: translateY(100%) scale(1.05); } /* Turun ke bawah */
+.auth-wrapper.is-register .register-bg { transform: translateY(0) scale(1.05); } /* Masuk ke tengah */
+
+/* Konten Teks di atas Gambar */
+.brand-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.bottom-content {
+    margin-bottom: 20px;
+}
+
+.tagline {
+    font-size: 10px;
+    color: var(--text-gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.headline {
+    font-size: 58px;
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    margin: 15px 0 25px 0;
+}
+
+.headline .text-gray {
+    color: var(--text-dark-gray);
+}
+
+.desc {
+    font-size: 11px;
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.dots-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background-color: #444;
+}
+
+.dot.active {
+    background-color: #fff;
+}
+
+.copyright {
+    font-size: 9px;
+    color: var(--text-gray);
+    letter-spacing: 2px;
+}
+
+/* ================================== */
+/* RIGHT PANEL (FORM AREA)            */
+/* ================================== */
+.right-panel {
+    width: 40%;
+    background-color: var(--bg-right);
+    border-left: 1px solid #1a1a1a;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.version-tag {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 10px;
+    color: #333;
+    letter-spacing: 2px;
+}
+
+.form-container {
+    width: 70%;
+    max-width: 420px;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* Class Animasi Blur dari JavaScript */
+.form-container.blur-anim {
+    filter: blur(15px);
+    opacity: 0;
+}
+
+/* Tab Header (Login | Register) */
+.tabs {
+    display: flex;
+    margin-bottom: 50px;
+    border: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 15px 0;
+    background: transparent;
+    border: none;
+    color: var(--text-dark-gray);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    background: #fff;
+    color: #000;
+}
+
+/* Forms */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.form-subtitle {
+    font-size: 10px;
+    color: var(--text-gray);
+    letter-spacing: 2px;
+}
+
+.form-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    margin-top: 5px;
+}
+
+/* Inputs */
+.input-row {
+    display: flex;
+    gap: 15px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input-group label {
+    display: block;
+    font-size: 9px;
+    color: var(--text-gray);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1px solid #1a1a1a;
+    padding: 16px;
+    color: var(--text-white);
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #444;
+}
+
+/* Forgot Password */
+.forgot-link {
+    display: block;
+    text-align: right;
+    font-size: 9px;
+    color: var(--text-dark-gray);
+    text-decoration: underline;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.forgot-link:hover { color: var(--text-gray); }
+
+/* Custom Checkbox (T&C) */
+.custom-check {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 9px;
+    color: var(--text-dark-gray);
+    letter-spacing: 1px;
+}
+
+.custom-check input { display: none; }
+
+.checkmark {
+    width: 12px;
+    height: 12px;
+    background-color: var(--text-white);
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.check-text strong {
+    color: var(--text-gray);
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    padding: 18px;
+    background-color: var(--text-white);
+    color: #000;
+    border: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover { background-color: #ddd; }
+
+/* Separator OR */
+.divider {
+    text-align: center;
+    border-bottom: 1px solid #1a1a1a;
+    line-height: 0.1em;
+    margin: 40px 0 30px;
+}
+
+.divider span {
+    background: var(--bg-right);
+    padding: 0 15px;
+    color: #222;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+/* Social Buttons */
+.social-login {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-social {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #1a1a1a;
+    color: var(--text-dark-gray);
+    padding: 14px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: border-color 0.3s, color 0.3s;
+}
+
+.btn-social:hover {
+    border-color: #444;
+    color: var(--text-gray);
+}
+
+.btn-social i { margin-right: 5px; font-size: 12px; }
+
+/* Footer Link Text */
+.switch-link {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 9px;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.switch-link span {
+    color: var(--text-gray);
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.switch-link span:hover { color: var(--text-white); }
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 900px) {
+    .auth-wrapper { flex-direction: column; overflow: auto; height: auto; }
+    .left-panel { width: 100%; height: 50vh; }
+    .right-panel { width: 100%; padding: 60px 20px; }
+    .form-container { width: 100%; }
+}

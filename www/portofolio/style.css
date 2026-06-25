@@ -1,0 +1,560 @@
+/* ========================================= */
+/* --- GLOBAL STYLES --- */
+/* ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 400;
+}
+
+a.selected {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 400;
+    border-bottom: #fff;
+    border-radius: 1px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 5px;
+    font-weight: 400;
+    margin: 80px 0 40px;
+    text-transform: uppercase;
+}
+
+/* ========================================= */
+/* --- HEADER & NAVBAR --- */
+/* ========================================= */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 25px 0;
+    background: #1A1A1A;
+    color: white;
+    border: 1px solid #3F3F3F;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* ========================================= */
+/* --- HERO SECTION (GLOBAL) --- */
+/* ========================================= */
+.hero {
+    height: 75vh;
+    background-color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    color: white;
+    padding-top: 164px;
+    padding-left: 48px;
+    padding-right: 48px;
+    padding-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    color: #000000;
+}
+
+.hero p {
+    font-size: 15px;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/* ========================================= */
+/* --- PORTOFOLIO SECTION --- */
+/* ========================================= */
+.portfolio-container {
+    max-width: 1200px;
+    margin: 140px auto 80px;
+}
+
+/* Header Portofolio */
+.portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+}
+
+.title-area h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 5px;
+}
+
+.title-area p {
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.filter-dropdown {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+}
+
+/* Divider (01, 02) */
+.section-divider {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.section-label {
+    font-size: 10px;
+    color: #888;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    margin-right: 20px;
+}
+
+.section-divider .line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ddd;
+}
+
+/* Grid & Kartu Bento */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 70px;
+}
+
+.port-card {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 320px;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.port-card:hover {
+    transform: scale(1.01);
+}
+
+.port-card.span-2 {
+    grid-column: span 2;
+}
+
+.port-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 20px 20px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.card-overlay .badge {
+    font-size: 9px;
+    color: #2ecc71;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 3px 8px;
+    border-radius: 2px;
+    width: fit-content;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.card-overlay .badge.badge-infra {
+    color: #aaa;
+}
+
+.card-overlay h3 {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* ========================================= */
+/* --- DETAILS MODAL --- */
+/* ========================================= */
+.details-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    padding: 50px 20px;
+    overflow-y: auto;
+}
+
+.details-modal.is-open {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.details-content {
+    background-color: #1A1A1A;
+    color: white;
+    max-width: 900px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #3F3F3F;
+    position: relative;
+    animation: zoomPop 0.25s ease-out;
+}
+
+@keyframes zoomPop {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-btn-details {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #666;
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn-details:hover {
+    color: #3498db;
+}
+
+.details-content h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #3F3F3F;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+.modal-info table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.modal-info tr {
+    border-bottom: 1px solid #3F3F3F;
+}
+
+.modal-info tr:last-child {
+    border-bottom: none;
+}
+
+.modal-info td {
+    padding: 15px 0;
+    text-align: left;
+}
+
+.info-label {
+    color: #666;
+    width: 30%;
+}
+
+.info-value {
+    color: white;
+    font-weight: 600;
+}
+
+.badge-details {
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-green {
+    color: #2ecc71;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.badge-blue {
+    color: #3498db;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.repo-link {
+    color: #888;
+    text-decoration: underline;
+}
+
+.repo-link:hover {
+    color: white;
+}
+
+.project-description {
+    border-top: 1px solid #3F3F3F;
+    padding-top: 40px;
+}
+
+.project-description h4 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.project-description p {
+    font-size: 12px;
+    color: #ccc;
+    font-weight: 300;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* ========================================= */
+/* --- IMAGE ZOOM LIGHTBOX (OLD) --- */
+/* ========================================= */
+.image-lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+}
+
+.image-lightbox.is-open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-lightbox__stage {
+    display: block;
+    background-color: #1a1a1a;
+    padding: 12px;
+    border: 1px solid #3f3f3f;
+    border-radius: 12px;
+    max-width: 90%;
+    max-height: 85vh;
+    position: relative;
+    animation: zoomPop 0.25s ease-out;
+}
+
+.image-lightbox__img {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 6px;
+}
+
+/* ========================================= */
+/* --- FOOTER --- */
+/* ========================================= */
+footer {
+    background-color: #111111;
+    color: #fff;
+    padding: 55px 0 65px;
+}
+
+.footer-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    border: 1px solid #ffffff;
+    padding: 50px 55px;
+}
+
+.footer-left h2 {
+    font-size: 26px;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+
+.footer-left p {
+    font-size: 11px;
+    color: #8a8a8a;
+    margin-bottom: 22px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    font-size: 20px;
+    color: #ffffff;
+    transition: opacity 0.3s;
+}
+
+.social-icons a:hover {
+    opacity: 0.75;
+}
+
+.footer-right {
+    display: flex;
+    gap: 85px;
+    padding-top: 4px;
+}
+
+.footer-col h4 {
+    font-size: 13px;
+    margin-bottom: 16px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    font-size: 12px;
+    color: #8a8a8a;
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+}
+
+/* ========================================= */
+/* --- RESPONSIVE DESIGN (MOBILE) --- */
+/* ========================================= */
+@media (max-width: 900px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .port-card.span-2 {
+        grid-column: span 2;
+    }
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+    .nav-container {
+        padding: 0 48px;
+    }
+}
+
+@media (max-width: 678px) {
+    .hero h1 { font-size: 32px; }
+    .nav-container { flex-direction: column; gap: 15px; padding: 0 20px; }
+    
+    .portfolio-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    .port-card.span-2 {
+        grid-column: span 1;
+    }
+    .details-content {
+        padding: 30px;
+    }
+    
+    .footer-box { flex-direction: column; gap: 40px; padding: 40px 30px; margin: 0 20px; }
+    .footer-right { flex-direction: column; gap: 30px; }
+}

@@ -1,0 +1,933 @@
+/* --- GLOBAL STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 400;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- UTILITY CLASSES --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- HEADER & NAVBAR --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 25px 0;
+    background: rgba(26, 26, 26, 0);
+    color: white;
+    border: 1px solid #3F3F3F;
+}
+
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+nav ul li a:hover {
+    color: #bbb;
+    transition: color 0.3s ease;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    position: relative; /* DITAMBAHKAN BUAT GRADIENT */
+    height: 100vh;
+    background-color: #111;
+    background-image: url('../img/hero.webp');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-top: 80px;
+}
+
+.hero h1 {
+    font-size: 44px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%; /* Lu bisa ubah % ini kalau blurnya kurang naik/turun */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none; 
+    z-index: 1;
+}
+
+/* DITAMBAHKAN: Biar teks hero lu gak ketimpa efek blurnya */
+.hero h1, .hero p {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    position: relative; 
+    height: 100vh;
+    background-color: #111;
+    background-image: url('../img/hero2.webp');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-top: 80px;
+}
+
+.hero h1 {
+    font-size: 44px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%; 
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none; 
+    z-index: 1;
+}
+
+.hero h1, .hero p {
+    position: relative;
+    z-index: 2;
+} 
+
+/* --- CONTENT GENERAL STRUCTURE --- */
+.content-wrapper {
+    background-color: #ffffff;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin: 40px 0 15px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 60px 0 20px;
+}
+
+/* --- PRODUCT CARDS --- */
+.prod-card {
+    background-color: #1A1A1A;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.prod-card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transform: translateY(-5px);
+}
+
+.prod-image-placeholder {
+    background-color: #D9D9D9; 
+    width: 100%;
+}
+
+.large .prod-image-placeholder {
+    height: 280px;
+}
+
+.standard .prod-image-placeholder {
+    height: 180px;
+}
+
+.prod-details {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.category {
+    font-size: 10px;
+    color: #888;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.prod-details h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    min-height: 40px; 
+}
+
+.desc {
+    font-size: 11px;
+    color: #aaa;
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.meta-info {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+    margin-bottom: 15px;
+}
+
+.meta-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.meta-info span {
+    font-size: 9px;
+    color: #666;
+    letter-spacing: 0.5px;
+}
+
+.meta-info strong {
+    font-size: 11px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.price {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: auto; 
+}
+
+/* --- GRIDS CONFIGURATION --- */
+.best-products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.products-list-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* --- SECTION PRODUK & HAMBURGER (STICKY MENTOK KIRI) --- */
+.relative-section {
+    position: relative;
+    width: 100%;
+}
+
+.hamburger-track {
+    position: absolute;
+    top: 40px;    
+    bottom: 0;    
+    left: 0;      
+    pointer-events: none; 
+    z-index: 50;
+}
+
+.hamburger-btn {
+    position: sticky;
+    top: 100px;   
+    pointer-events: auto; 
+    background-color: #111;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    padding: 10px 15px; 
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 0 4px 4px 0; 
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+.hamburger-btn:hover {
+    background-color: #333;
+}
+
+.products-header-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0 30px;
+}
+
+/* --- CATALOG TABS (PRODUCTS / SERVICES) --- */
+.catalog-tabs {
+    display: flex;
+    gap: 40px; 
+    margin: 40px 0 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab-link {
+    letter-spacing: 4px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #aaa; 
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 8px; 
+    transition: color 0.3s ease;
+}
+
+.tab-link:hover {
+    color: #555;
+}
+
+.tab-link.active {
+    color: #000;
+}
+
+.tab-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+}
+
+/* --- FILTER CONTROLS (MIDDLE) --- */
+.filter-controls-centered {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center;
+    gap: 8px;              
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.filter-row, .showing-row {
+    display: flex;
+    align-items: center;
+    gap: 6px; 
+    color: #333;
+}
+
+.badge {
+    background-color: #f0f0f0;
+    padding: 2px 6px;
+    font-weight: 700;
+    border-radius: 2px;
+    color: #000;
+}
+
+.show-num {
+    color: #888;
+    padding: 2px 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.show-num.active {
+    color: #000;
+    border: 1px solid #000;
+    font-weight: 700;
+}
+
+.show-num:hover {
+    color: #000;
+}
+
+/* --- OVERLAY BLUR --- */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1500;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- SIDEBAR FILTER --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -350px; 
+    width: 300px;
+    height: 100vh;
+    background-color: #161616;
+    color: #fff;
+    z-index: 2000;
+    padding: 40px 30px;
+    transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow-y: auto;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+}
+
+.sidebar.open {
+    left: 0; 
+}
+
+.sidebar h3 {
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.sidebar-divider {
+    border: 0;
+    height: 1px;
+    background-color: #333;
+    margin: 20px 0;
+}
+
+.filter-group {
+    margin-bottom: 35px;
+}
+
+.filter-group h4 {
+    font-size: 10px;
+    color: #888;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+/* Custom Checkbox Design */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 10px;
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    height: 14px;
+    width: 14px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    margin-right: 12px;
+    transition: all 0.2s;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: #00ff00; 
+    border: 1px solid #00ff00;
+}
+
+.custom-checkbox .label-text {
+    flex-grow: 1;
+    color: #ccc;
+}
+
+.custom-checkbox input:checked ~ .label-text {
+    color: #00ff00;
+}
+
+.custom-checkbox .count {
+    background-color: #333;
+    color: #888;
+    padding: 2px 5px;
+    font-size: 8px;
+    border-radius: 2px;
+}
+
+/* Custom Range Slider */
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2px;
+    background: #555;
+    outline: none;
+    margin: 15px 0;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.price-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: #888;
+    margin-top: 5px;
+}
+
+.price-labels .current-price {
+    color: #00ff00;
+}
+
+.apply-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.apply-btn:hover {
+    background-color: #ddd;
+}
+
+/* --- SERVICES SECTION --- */
+.services-list-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.service-image-placeholder {
+    width: 100%;
+    height: 380px; 
+    background-color: #000;
+    background-size: cover;
+    background-position: center top;
+}
+
+/* ================================================= */
+/* BACKGROUND GRADIENT + DOTS UNTUK FETCHED SERVICES */
+/* ================================================= */
+#services-detail-view {
+    width: 100%;
+    margin-top: 60px;    
+    background-color: #1a1a1a; 
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 1) 1px, transparent 1px),
+        linear-gradient(to bottom, #ffffff 0%, #111111 95%);
+    background-size: 28px 28px, 100% 100%;
+    color: #fff;
+}
+
+/* --- PAGINATION --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 40px;
+    margin-bottom: 120px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.page-title {
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.page-num {
+    color: #888;
+    padding: 2px 6px;
+}
+
+.page-num.active {
+    color: #000;
+    border: 1px solid #000;
+}
+
+.page-arrow {
+    color: #888;
+}
+
+/* --- PRODUCT MODAL (POPUP) --- */
+.product-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 3000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.product-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.product-modal {
+    display: flex;
+    width: 900px;
+    max-width: 95%;
+    background-color: #242424; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    transform: translateY(30px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.product-modal-overlay.active .product-modal {
+    transform: translateY(0) scale(1);
+}
+
+.modal-left {
+    background-color: #111; 
+    padding: 25px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.main-image-box {
+    background-color: #fff;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.img-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px;
+    color: #000;
+}
+
+.img-nav-btn:first-child { left: 5px; }
+.img-nav-btn:last-child { right: 5px; }
+
+.thumbnail-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.thumb-box {
+    background-color: #fff;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.modal-right {
+    width: 55%;
+    padding: 40px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.modal-date {
+    font-size: 11px;
+    color: #888;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.action-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 300;
+}
+
+.action-btn:hover {
+    color: #ccc;
+}
+
+.modal-divider {
+    border: 0;
+    height: 1px;
+    background-color: #555;
+    margin: 25px 0;
+}
+
+.modal-price {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.modal-desc {
+    font-size: 13px;
+    color: #ccc;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+.modal-tags {
+    display: flex;
+    gap: 15px;
+    margin-top: auto; 
+}
+
+.modal-tag {
+    background-color: #fff;
+    color: #000;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 8px 15px;
+    letter-spacing: 1px;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #111111;
+    color: #fff;
+    padding: 55px 0 65px;
+}
+
+.footer-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    border: 1px solid #ffffff;
+    padding: 50px 55px;
+}
+
+.footer-left h2 {
+    font-size: 26px;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+
+.footer-left p {
+    font-size: 11px;
+    color: #8a8a8a;
+    margin-bottom: 22px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    font-size: 20px;
+    color: #ffffff;
+    transition: opacity 0.3s;
+}
+
+.social-icons a:hover {
+    opacity: 0.75;
+}
+
+.footer-right {
+    display: flex;
+    gap: 85px;
+    padding-top: 4px;
+}
+
+.footer-col h4 {
+    font-size: 13px;
+    margin-bottom: 16px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    font-size: 12px;
+    color: #8a8a8a;
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+}
+
+/* --- RESPONSIVE DESIGN (MOBILE FRIENDLY) --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 32px; }
+    .nav-container { flex-direction: column; gap: 15px; padding: 0 20px;}
+    
+    .best-products-grid { grid-template-columns: 1fr; }
+    .products-list-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-list-grid { grid-template-columns: 1fr; } 
+    
+    .footer-box { flex-direction: column; gap: 40px; padding: 40px 30px; }
+    .footer-right { flex-direction: column; gap: 30px; }
+    
+    .product-modal {
+        flex-direction: column;
+        height: 90vh;
+        overflow-y: auto;
+    }
+    .modal-left, .modal-right {
+        width: 100%;
+    }
+    .modal-right {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-list-grid { grid-template-columns: 1fr; }
+}

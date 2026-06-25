@@ -1,0 +1,64 @@
+<style>
+  .modal-options {
+    width: 100%; max-width: 400px; background-color: #111111;
+    border: 1px solid #222222; font-family: 'Montserrat', sans-serif;
+    color: #ffffff; margin: 0 auto;
+  }
+  .mo-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 21px 21px; border-bottom: 1px solid #222222;
+  }
+  .mo-title { font-size: 14px; font-weight: 700; letter-spacing: 2px; }
+  .mo-close { background: none; border: none; color: #888; font-size: 20px; cursor: pointer; }
+  .mo-close:hover { color: #fff; }
+  
+  .mo-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 20px 30px; border-bottom: 1px solid #222222;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .mo-item:hover { background: rgba(255,255,255,0.02); }
+  
+  .mo-badge {
+    width: 45px; height: 30px; display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 400; letter-spacing: 1px;
+  }
+  .mo-badge.on { background: #00FF88; border: 1px solid #333; color: #FFF; }
+  .mo-badge.time { background: #0a0a0a; border: 1px solid #333; color: #00FF88; }
+  .mo-badge.delete { background: #ff0000; border: 1px solid #333; color: #fff; }
+  
+  .mo-text-group { display: flex; flex-direction: column; gap: 5px; }
+  .mo-text-title { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+  .mo-text-desc { font-size: 10px; color: #666666; }
+</style>
+
+<div class="modal-options">
+  <div class="mo-header">
+    <div class="mo-title">OPTIONS</div>
+    <button class="mo-close">&#x2715;</button>
+  </div>
+  
+  <div class="mo-item">
+    <div class="mo-badge on">ON</div>
+    <div class="mo-text-group">
+      <div class="mo-text-title">SWITCH</div>
+      <div class="mo-text-desc">Turn Off or Turn On The infrastructure.</div>
+    </div>
+  </div>
+  
+  <div class="mo-item">
+    <div class="mo-badge time">TIME</div>
+    <div class="mo-text-group">
+      <div class="mo-text-title">EXTEND UP TIME</div>
+      <div class="mo-text-desc">Extend Up time of infrastructure.</div>
+    </div>
+  </div>
+  
+  <div class="mo-item">
+    <div class="mo-badge delete">DELETE</div>
+    <div class="mo-text-group">
+      <div class="mo-text-title">DEMOLISH</div>
+      <div class="mo-text-desc">Delete the Infrastructure, No refunds.</div>
+    </div>
+  </div>
+</div>

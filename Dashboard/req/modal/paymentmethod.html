@@ -1,0 +1,253 @@
+<style>
+  body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  /* ======= CONTAINER UTAMA ======= */
+  .pay-flow-card {
+    width: 100%;
+    max-width: 450px;
+    background-color: #0A0A0A;
+    border: 1px solid #222222;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    
+    /* --- FIX SCROLL --- */
+    max-height: 85vh; 
+    overflow-y: auto; 
+  }
+
+  /* --- CUSTOM SCROLLBAR --- */
+  .pay-flow-card::-webkit-scrollbar {
+    width: 6px; 
+  }
+  .pay-flow-card::-webkit-scrollbar-track {
+    background: #0A0A0A; 
+  }
+  .pay-flow-card::-webkit-scrollbar-thumb {
+    background: #333333; 
+    border-radius: 10px;
+  }
+  .pay-flow-card::-webkit-scrollbar-thumb:hover {
+    background: #00FF88; 
+  }
+
+  /* Header */
+  .pf-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 21px 21px;
+    border-bottom: 1px solid #222222;
+    background-color: #111111;
+  }
+  .pf-title { font-size: 14px; font-weight: 700; letter-spacing: 2px; }
+  .pf-close { background: none; border: none; color: #888; font-size: 20px; cursor: pointer; }
+
+  /* Info Jumlah Tagihan */
+  .pf-info { padding: 25px 26px; border-bottom: 1px solid #222222; }
+  .pf-info-top { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 10px; color: #666; letter-spacing: 1px; text-transform: uppercase; }
+  .pf-info-timer { color: #00FF88; font-weight: 600; }
+  .pf-amount { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+  .pf-info-bot { display: flex; justify-content: space-between; font-size: 10px; color: #444; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* ======= AREA DISCOUNT & ITEMS ======= */
+  .pf-discount { padding: 25px 26px; border-bottom: 1px solid #222222; }
+  .pf-label { font-size: 10px; color: #666; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 15px; display: block;}
+  .pf-input { width: 100%; background: transparent; border: none; border-bottom: 2px dashed #444; color: #fff; font-size: 14px; padding-bottom: 10px; outline: none; letter-spacing: 2px;}
+  
+  .pf-items { padding: 25px 26px; border-bottom: 1px solid #222222; }
+  .pf-items-header { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 12px; font-weight: 700; letter-spacing: 2px; }
+  .pf-item-row { display: flex; justify-content: space-between; font-size: 10px; color: #888; letter-spacing: 1px; margin-bottom: 15px; text-transform: uppercase;}
+  .pf-total-row { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-top: 25px;}
+  .pf-total-val { color: #00FF88; }
+
+  /* ======= STEP 1: PILIH METODE ======= */
+  .pf-method {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 26px;
+    border-bottom: 1px solid #222222;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .pf-method:hover { background: rgba(255,255,255,0.02); }
+  .pf-method-left { display: flex; align-items: center; gap: 20px; }
+  .pf-badge {
+    width: 45px; height: 30px; border: 1px solid #333; background: #0a0a0a;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 600; color: #00FF88; letter-spacing: 1px;
+  }
+  .pf-text-title { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 5px; }
+  .pf-text-desc { font-size: 10px; color: #666666; }
+  .pf-arrow { color: #555; font-size: 14px; }
+
+  /* ======= STEP 2: AREA QRIS ======= */
+  .pf-scan-area { padding: 40px 26px; display: flex; flex-direction: column; align-items: center; gap: 20px;}
+  .pf-scan-title { font-size: 14px; font-weight: 700; letter-spacing: 2px; }
+  .pf-box { width: 220px; height: 220px; background: #ffffff; border: 4px solid #00FF88; display: flex; align-items: center; justify-content: center; color: #000; font-weight: 700; font-size: 12px; letter-spacing: 1px;}
+  .pf-how { font-size: 10px; color: #fff; letter-spacing: 1px; text-decoration: underline; cursor: pointer; margin-top: 10px;}
+  
+  .pf-actions { padding: 0 26px 40px; display: flex; flex-direction: column; gap: 15px; }
+  .pf-btn { width: 100%; padding: 16px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: 0.2s; }
+  .pf-btn-dark { background: #111; border: 1px solid #333; color: #fff; }
+  .pf-btn-dark:hover { background: #222; }
+  .pf-btn-outline { background: transparent; border: 1px solid #00FF88; color: #00FF88; }
+  .pf-btn-outline:hover { background: rgba(0, 255, 136, 0.1); }
+  .pf-btn-primary { background: #00FF88; color: #000; border: none; } 
+  .pf-btn-primary:hover { background: #2bff00; }
+
+  /* ======= STEP 3: SUCCESS VERIFIED ======= */
+  .pf-success-content { padding: 80px 26px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .pf-success-icon { 
+    width: 70px; height: 70px; border: 2px solid #00FF88; 
+    background-color: rgba(0, 255, 136, 0.05);
+    display: flex; align-items: center; justify-content: center; 
+    color: #00FF88; font-weight: 700; font-size: 18px; letter-spacing: 2px; 
+    margin-bottom: 30px; 
+  }
+  .pf-success-title { font-size: 16px; font-weight: 700; letter-spacing: 2px; color: #00FF88; text-transform: uppercase; margin-bottom: 20px; }
+  
+  .pf-success-footer { background: #0a0a0a; border-top: 1px solid #222222; padding: 30px 26px; text-align: center; }
+  .pf-success-timer { font-size: 9px; color: #666; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px; display: block; }
+</style>
+</head>
+<body>
+
+<div class="pay-flow-card">
+  
+  <div id="step-method">
+    <div class="pf-header">
+      <div class="pf-title">PETELOT</div>
+      <button class="pf-close" onclick="closeOptionsModal()">✕</button>
+    </div>
+    
+    <div class="pf-info">
+      <div class="pf-info-top">
+        <span>TOTAL AMOUNT</span>
+        <span>PAY WITHIN <span class="pf-info-timer">23:59:56</span></span>
+      </div>
+      <div class="pf-amount">Rp. 0</div>
+      <div class="pf-info-bot">
+        <span>ID: AMBASING1234</span>
+      </div>
+    </div>
+    
+    <div class="pf-discount">
+      <span class="pf-label">INPUT DISCOUNT CODE</span>
+      <input type="text" class="pf-input" placeholder="-------------">
+    </div>
+    
+    <div class="pf-items">
+      <div class="pf-items-header">
+        <span>ITEMS</span>
+        <span style="font-size: 10px; color: #ffffff; text-decoration: underline; text-decoration-color: #00FF88; cursor: pointer;">PAYMENT</span>
+      </div>
+      <div class="pf-item-row"><span>ITEM1</span><span>RP. 0</span></div>
+      <div class="pf-item-row"><span>ITEM2</span><span>RP. 0</span></div>
+      <div class="pf-total-row"><span>TOTAL</span><span class="pf-total-val">RP. 0</span></div>
+    </div>
+
+    <div class="pf-method" onclick="switchStep('step-qris')">
+      <div class="pf-method-left">
+        <div class="pf-badge">ATM</div>
+        <div>
+          <div class="pf-text-title">BANK TRANSFER</div>
+          <div class="pf-text-desc">Virtual Account / ATM Bersama</div>
+        </div>
+      </div>
+      <div class="pf-arrow">›</div>
+    </div>
+    
+    <div class="pf-method" onclick="switchStep('step-qris')">
+      <div class="pf-method-left">
+        <div class="pf-badge">QRIS</div>
+        <div>
+          <div class="pf-text-title">GOPAY & E-WALLETS</div>
+          <div class="pf-text-desc">Scan QR code using GoPay, OVO, Dana</div>
+        </div>
+      </div>
+      <div class="pf-arrow">›</div>
+    </div>
+    
+    <div class="pf-method" onclick="switchStep('step-qris')">
+      <div class="pf-method-left">
+        <div class="pf-badge">BCA</div>
+        <div>
+          <div class="pf-text-title">KLIKBCA</div>
+          <div class="pf-text-desc">Pay with KlikBCA credentials</div>
+        </div>
+      </div>
+      <div class="pf-arrow">›</div>
+    </div>
+  </div>
+
+
+  <div id="step-qris" style="display: none;">
+    <div class="pf-header">
+      <div class="pf-title">PETELOT</div>
+      <button class="pf-close" onclick="switchStep('step-method')">←</button>
+    </div>
+    
+    <div class="pf-info">
+      <div class="pf-info-top">
+        <span>TOTAL AMOUNT</span>
+        <span>PAY WITHIN <span class="pf-info-timer">23:59:56</span></span>
+      </div>
+      <div class="pf-amount">Rp. 0</div>
+      <div class="pf-info-bot">
+        <span>ID: AMBASING1234</span>
+      </div>
+    </div>
+    
+    <div class="pf-discount">
+      <span class="pf-label">INPUT DISCOUNT CODE</span>
+      <input type="text" class="pf-input" placeholder="-------------">
+    </div>
+    
+    <div class="pf-items">
+      <div class="pf-items-header">
+        <span>ITEMS</span>
+        <span style="font-size: 10px; color: #ffffff; text-decoration: underline; text-decoration-color: #00FF88; cursor: pointer;" onclick="switchStep('step-method')">PAYMENT</span>
+      </div>
+      <div class="pf-item-row"><span>ITEM1</span><span>RP. 0</span></div>
+      <div class="pf-item-row"><span>ITEM2</span><span>RP. 0</span></div>
+      <div class="pf-total-row"><span>TOTAL</span><span class="pf-total-val">RP. 0</span></div>
+    </div>
+    
+    <div class="pf-scan-area">
+      <div class="pf-scan-title">QRIS PAYMENT</div>
+      <div class="pf-box">[ QR CODE AREA ]</div>
+      <div class="pf-how">[+] HOW TO PAY</div>
+    </div>
+    
+    <div class="pf-actions">
+      <button class="pf-btn pf-btn-dark">DOWNLOAD QRIS</button>
+      <button class="pf-btn pf-btn-outline" onclick="switchStep('step-success')">CHECK STATUS</button>
+    </div>
+  </div>
+
+
+  <div id="step-success" style="display: none;">
+    <div class="pf-success-content">
+      <div class="pf-success-icon">OK</div>
+      <div class="pf-success-title">TRANSACTION VERIFIED</div>
+      <div class="pf-amount" style="margin-bottom: 15px;">Rp. 0</div>
+      <div class="pf-info-bot" style="justify-content: center;"><span>SYS_ID: AMBASING1234</span></div>
+    </div>
+    
+    <div class="pf-success-footer">
+      <span class="pf-success-timer">SESSION CLOSING IN 3 SECONDS...</span>
+      <button class="pf-btn pf-btn-primary" onclick="switchStep('step-method')">RETURN TO SYSTEM</button>
+    </div>
+  </div>
+
+</div>

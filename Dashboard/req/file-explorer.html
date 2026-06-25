@@ -1,0 +1,136 @@
+  <h1 class="header-title">FILES</h1>
+  
+  <div class="breadcrumb">
+    <span class="bc-label">DIRECTORY:</span> / 
+    <span class="bc-project">project-prj-098</span> / 
+    <span class="bc-path">src</span>
+  </div>
+  
+  <div class="large-panel">
+    
+    <div class="panel-section">
+      <div class="explorer-header">
+        <div class="panel-title">// SOURCE_CODE_EXPLORER</div>
+        <button class="btn-download-all">DOWNLOAD ALL [.ZIP]</button>
+      </div>
+      
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 35%">FILE NAME</th>
+              <th style="width: 15%">TYPE</th>
+              <th style="width: 15%">SIZE</th>
+              <th style="width: 20%">LAST MODIFIED</th>
+              <th style="width: 15%; text-align: right;">ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="file-name-col">
+                  <svg class="file-icon" viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                  ..
+                </div>
+              </td>
+              <td>Parent Directory</td>
+              <td>—</td>
+              <td>—</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-sm-outline" onclick="loadContent('file.html')">GO BACK</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="file-name-col">
+                  <svg class="file-icon" viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                  assets/
+                </div>
+              </td>
+              <td>Directory</td>
+              <td>—</td>
+              <td>12/APR/2026</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-sm-outline" onclick="loadContent('file.html')">CHANGE DIR</button>
+                  <button class="btn-sm-outline">DOWNLOAD</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="file-name-col">
+                  <svg class="file-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                  main_script.js
+                </div>
+              </td>
+              <td>JavaScript</td>
+              <td class="text-green">42.5 KB</td>
+              <td>12/APR/2026</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-sm-outline" onclick="openTextExplorer()">OPEN</button>
+                  <button class="btn-sm-outline">DOWNLOAD</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="file-name-col">
+                  <svg class="file-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                  bot_config.json
+                </div>
+              </td>
+              <td>JSON</td>
+              <td class="text-green">2.1 KB</td>
+              <td>12/APR/2026</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-sm-outline" onclick="openTextExplorer()">OPEN</button>
+                  <button class="btn-sm-outline">DOWNLOAD</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="file-name-col">
+                  <svg class="file-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                  README.c
+                </div>
+              </td>
+              <td>Text</td>
+              <td class="text-green">2.1 KB</td>
+              <td>12/APR/2026</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-sm-outline" onclick="openTextExplorer()">OPEN</button>
+                  <button class="btn-sm-outline">DOWNLOAD</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="pagination">
+        <div class="page-group">
+          <span class="page-label">SHOWING 10 FROM 6 :</span>
+          <div class="page-controls"><div class="page-box active">5</div><div class="page-box">10</div><div class="page-box">15</div></div>
+        </div>
+        <div class="page-group">
+          <span class="page-label">SLIDE :</span>
+          <div class="page-controls">
+            <div class="page-box active">1</div>
+            <input type="text" class="page-box-input" placeholder="_">
+            <span class="page-label">FROM</span>
+            <div class="page-box">1</div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
+  <div class="version">V.2026.C_DB</div>
