@@ -5,7 +5,6 @@
     { "source": "/portofolio", "destination": "/www/portofolio/index.html" },
     { "source": "/dashboard", "destination": "/Dashboard/dashboard/index.html" },
     { "source": "/auth", "destination": "/Dashboard/auth/index.html" },
-    
     { "source": "/(.*)", "destination": "/www/$1" }
   ]
 }
