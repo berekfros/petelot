@@ -1,20 +1,11 @@
 {
   "rewrites": [
-    { "source": "/catalog/(.*)", "destination": "/catalog/$1" },
-    { "source": "/portofolio/(.*)", "destination": "/portofolio/$1" },
-    { "source": "/req/(.*)", "destination": "/req/$1" },
-    { "source": "/img/(.*)", "destination": "/img/$1" },
+    { "source": "/landing", "destination": "/www/landing/index.html" },
+    { "source": "/catalog", "destination": "/www/catalog/index.html" },
+    { "source": "/portofolio", "destination": "/www/portofolio/index.html" },
+    { "source": "/dashboard", "destination": "/Dashboard/dashboard/index.html" },
+    { "source": "/auth", "destination": "/Dashboard/auth/index.html" },
     
-    { "source": "/login/(.*)", "destination": "/login/index.html" },
-    
-    { "source": "/dashboard/(.*)", "destination": "/Dashboard/dashboard/index.html" },
-    { "source": "/auth/(.*)", "destination": "/Dashboard/auth/$1" },
-    { "source": "/dashboard/req/(.*)", "destination": "/Dashboard/req/$1" },
-    { "source": "/dashboard/img/(.*)", "destination": "/Dashboard/img/$1" },
-    
-    { "source": "/(.*)", "destination": "/landing/$1" }
-  ],
-  "redirects": [
-    { "source": "/login/", "destination": "https://dashboard.domain-anda.com/auth/", "permanent": false }
+    { "source": "/(.*)", "destination": "/www/$1" }
   ]
 }
