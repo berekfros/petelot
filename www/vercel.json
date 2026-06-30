@@ -1,8 +1,18 @@
 {
+  "redirects": [
+    {
+      "source": "/login",
+      "destination": "https://dashboardpetelot.vercel.app/auth",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/landing/index.html" },
     { "source": "/landing", "destination": "/landing/index.html" },
     { "source": "/catalog", "destination": "/catalog/index.html" },
-    { "source": "/portofolio", "destination": "/portofolio/index.html" }
+    { "source": "/portofolio", "destination": "/portofolio/index.html" },
+    { "source": "/style.css", "destination": "/landing/style.css" },
+    { "source": "/req/(.*)", "destination": "/req/$1" },
+    { "source": "/img/(.*)", "destination": "/img/$1" }
   ]
 }
