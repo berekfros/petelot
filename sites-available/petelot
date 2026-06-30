@@ -1,0 +1,69 @@
+server {
+    listen 80;
+    server_name _;
+
+    root /var/petelot/www/landing;
+    index index.html;
+
+    # Akses Home
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Akses Catalog
+    location /catalog/ {
+        alias /var/petelot/www/catalog/;
+        index index.html;
+    }
+
+    # Akses Portofolio
+    location /portofolio/ {
+        alias /var/petelot/www/portofolio/;
+        index index.html;
+    }
+
+    location /req/ {
+        alias /var/petelot/www/req/;
+        try_files $uri $uri/ =404;
+    }
+    location /img/ {
+        alias /var/petelot/www/img/;
+        try_files $uri $uri/ =404;
+    }
+
+
+    # Redirect Login menggunakan variabel $host
+    location /login/ {
+        return 301 http://$host:8080/auth/;
+    }
+}
+
+server {
+    listen 8080;
+    server_name _;
+
+    root /var/petelot/Dashboard;
+    index index.html;
+
+    # Akses ke main dashboard
+    location / {
+        root /var/petelot/Dashboard/dashboard;
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Akses ke folder auth, req, dan img
+    location /auth/ {
+        alias /var/petelot/Dashboard/auth/;
+        try_files $uri $uri/ =404;
+    }
+
+    location /req/ {
+        alias /var/petelot/Dashboard/req/;
+        try_files $uri $uri/ =404;
+    }
+    location /img/ {
+        alias /var/petelot/Dashboard/img/;
+        try_files $uri $uri/ =404;
+    }
+
+}
