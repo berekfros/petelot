@@ -1,7 +1,7 @@
 {
   "redirects": [
     {
-      "source": "/login/","/login",
+      "source": "/login",
       "destination": "https://dashboardpetelot.vercel.app/auth",
       "permanent": false
     }
